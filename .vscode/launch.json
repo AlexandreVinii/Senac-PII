@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - testando",
+            "request": "launch",
+            "mainClass": "testando"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Reader",
+            "request": "launch",
+            "mainClass": "Reader"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Diferenca",
+            "request": "launch",
+            "mainClass": "Diferenca"
+        }
+    ]
+}
