@@ -1,31 +1,57 @@
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
+
+ /*
+ Nome: Alexandre Vinicius Ferreira da Silva
+ */
 public class testando{
     
     public static void main(String[] args) throws FileNotFoundException, IOException{
-        FileReader arquivo;
-        arquivo = new FileReader("entrada.txt");
-        var leBufferizado = new BufferedReader(arquivo);
-        String linha = leBufferizado.readLine();
-        System.out.println(linha);
-        while ((line = leBufferizado.readLine()) != null) {
 
+    //  Declaração de variáveis para abertura/leitura de um arquivo
+        FileReader arquivo;
+        String line;
+        ArrayList<String> list = new ArrayList<String>();
+        int[] n;
+
+    // Variável recebe um arquivo e o lê
+        arquivo = new FileReader("entrada.txt");
+
+    // Cria um espaço na memória para esse arquivo enquanto está aberto
+        var leBufferizado = new BufferedReader(arquivo);
+        
+    // Lê Primeira linha e salva em uma variável 
+        String firstLine = leBufferizado.readLine();
+
+        String[] dados = firstLine.split(" ");
+        n = new int[dados.length];
+
+        for (int k = 0; k < dados.length; k++) {
+            n[k] = Integer.parseInt(dados[k]);
+        }
+        float[][] data = new float[n[0]][n[1]];
+        
+        while ((line = leBufferizado.readLine()) != null) {
+            // System.out.println(line);
+            list.add(line);
+        }
+        System.out.println(list);
+        for (int i = 0; i < data.length; i++) {
+            dados = list.get(i).split(" ");
+            for (int j = 0; j < data[i].length; j++) {
+                data[i][j] = Float.parseFloat(dados[j]);
+            }
         }
         leBufferizado.close();
+        
+        System.out.println("COLUNA E LINHA TAL "+data[2][4]);
 
-        String[] dados = linha.split(" ");
-
-        int[] vetor = new int[dados.length];
-
-        for (int i = 0; i < dados.length; i++) {
-            vetor[i] = Integer.parseInt(dados[i]);
-            // System.out.println(vetor[i]);
-        }
-
-        int dif = diferencaAbsoluta(vetor);
+        
         // System.out.println("Diferença Absoluta: "+dif);
         
     }
