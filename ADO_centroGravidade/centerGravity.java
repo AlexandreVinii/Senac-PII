@@ -11,58 +11,17 @@ Nome: Alexandre Vinicius Ferreira da Silva
 public class centerGravity {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
+        String arquivoTxt = "entrada.txt";
 
-        // Declaração de variáveis para abertura/leitura de um arquivo.
-        FileReader arquivo;
-        String line;
-        ArrayList<String> list = new ArrayList<String>();
-        int[] n;
+        float[][] data = criaMatriz(arquivoTxt);
+        int[] matrizLength = getTamanho(arquivoTxt);
+
         float[] aux;
-
-        // Variável recebe um arquivo e o lê.
-        arquivo = new FileReader("entrada.txt");
-
-        // Cria um espaço na memória para esse arquivo enquanto está aberto.
-        var leBufferizado = new BufferedReader(arquivo);
-
-        // Lê Primeira linha do arquivo e salva em uma variável.
-        String firstLine = leBufferizado.readLine();
-
-        // (String) Guarda a primeira linha do arquivo em um vetor para determinar o
-        // (tamanho da Matriz).
-        String[] dados = firstLine.split(" ");
-        n = new int[dados.length];
-
-        // Laço de repetição converte String em Float para determinar o tamanho da
-        // matriz com base na primeira linha do Arquivo.
-        for (int k = 0; k < dados.length; k++) {
-            n[k] = Integer.parseInt(dados[k]);
-        }
-        float[][] data = new float[n[0]][n[1]];
-
-        // Adiciona todos os dados em um array list do tipo String
-        while ((line = leBufferizado.readLine()) != null) {
-            list.add(line);
-        }
-        System.out.println(list);
-
-        // Laço de repetição que converte um arraylist(String) em uma Matriz do tipo
-        // Float
-        for (int i = 0; i < data.length; i++) {
-            dados = list.get(i).split(" ");
-            for (int j = 0; j < data[i].length; j++) {
-                data[i][j] = Float.parseFloat(dados[j]);
-            }
-        }
-
-        // Fecha o arquivo.
-        leBufferizado.close();
-
         // Laço que cria duas matrizes que adiciona a
         // diferença absoluta de cada Linha e cada coluna em duas novas Matrizes
         // Matriz diferença Linha e Matriz diferença Coluna.
-        float[][] arrayLine = new float[n[0]][n[1]];
-        float[][] arrayCol = new float[n[0]][n[1]];
+        float[][] arrayLine = new float[matrizLength[0]][matrizLength[1]];
+        float[][] arrayCol = new float[matrizLength[0]][matrizLength[1]];
         for (int i = 0; i < data.length; i++) {
             for (int j = 0; j < data[i].length; j++) {
                 aux = diferencaAbsoluta(data, i, j);
@@ -95,6 +54,7 @@ public class centerGravity {
         }
         System.out.print("Centro Gravidade Matriz : ");
         System.out.printf("m[%d][%d] = %.1f\n", ind, col, data[ind][col]);
+        System.out.printf("%dº Linha & %dº Coluna  = %.1f\n", ind+1, col+1, data[ind][col]);
         System.out.println("Diferença Absoluta Linha: " + menorLine);
         System.out.println("Diferença Absoluta Coluna: " + menorCol);
 
@@ -134,4 +94,71 @@ public class centerGravity {
         return new float[] { dif_linha, dif_coluna, l, c };
     }
 
+    public static float[][] criaMatriz(String arquivoTxt) throws FileNotFoundException, IOException{
+        // Declaração de variáveis para abertura/leitura de um arquivo.
+        FileReader arquivo;
+        String line;
+        ArrayList<String> list = new ArrayList<String>();
+        int[] matrizLength = getTamanho(arquivoTxt);
+        String[] dados;
+        float[][] data = new float[matrizLength[0]][matrizLength[1]];
+        
+        
+
+        // Variável recebe um arquivo e o lê.
+        arquivo = new FileReader(arquivoTxt);
+
+        // Cria um espaço na memória para esse arquivo enquanto está aberto.
+        var leBufferizado = new BufferedReader(arquivo);
+
+        // Lê Primeira linha do arquivo e salva em uma variável.
+        String firstLine = leBufferizado.readLine();
+        System.out.println("Primeira linha do Arquivo : "+firstLine);
+
+        // Adiciona todos os dados em um array list do tipo String
+        while ((line = leBufferizado.readLine()) != null) {
+            list.add(line);
+        }
+        System.out.println(list);
+
+        // Laço de repetição que converte um arraylist(String) em uma Matriz do tipo
+        // Float
+        for (int i = 0; i < data.length; i++) {
+            dados = list.get(i).split(" ");
+            for (int j = 0; j < data[i].length; j++) {
+                data[i][j] = Float.parseFloat(dados[j]);
+            }
+        }
+
+        // Fecha o arquivo.
+        leBufferizado.close();
+
+        return data;
+    }
+
+    public static int[] getTamanho(String arquivoTxt)throws FileNotFoundException, IOException{
+        FileReader arquivo;
+        arquivo = new FileReader(arquivoTxt);
+        int[] matrizLength;
+
+        // Cria um espaço na memória para esse arquivo enquanto está aberto.
+        var leBufferizado = new BufferedReader(arquivo);
+
+        // Lê Primeira linha do arquivo e salva em uma variável.
+        String firstLine = leBufferizado.readLine();
+
+        String[] vLength = firstLine.split(" ");
+
+        matrizLength = new int[vLength.length];
+
+        // Laço de repetição converte String em Float para determinar o tamanho da
+        // matriz com base na primeira linha do Arquivo.
+        for (int k = 0; k < vLength.length; k++) {
+            matrizLength[k] = Integer.parseInt(vLength[k]);
+        }
+
+        leBufferizado.close();
+
+        return matrizLength;
+    }
 }
