@@ -11,7 +11,7 @@ Nome: Alexandre Vinicius Ferreira da Silva
 public class centerGravity {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        String arquivoTxt = "entrada.txt";
+        String arquivoTxt = "entrada03.txt";
 
         float[][] data = criaMatriz(arquivoTxt);
         int[] matrizLength = getTamanho(arquivoTxt);
@@ -44,7 +44,10 @@ public class centerGravity {
         // Laço de repetição que encontra o centro de gravidade de uma matriz.
         for (int i = 0; i < data.length; i++) {
             for (int j = 0; j < data[i].length; j++) {
-                if (arrayLine[i][j] <= menorLine && arrayCol[i][j] <= menorCol) {
+                if(menorLine == arrayLine[i][j] && menorCol == arrayCol[i][j] ){
+                    break;
+                }
+                if (arrayLine[i][j] <= menorLine && arrayCol[i][j] <= menorCol ) {
                     menorLine = arrayLine[i][j];
                     menorCol = arrayCol[i][j];
                     ind = i;
