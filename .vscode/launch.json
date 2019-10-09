@@ -2,6 +2,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Busca_Ordena",
+            "request": "launch",
+            "mainClass": "Busca_Ordena"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - testando",
             "request": "launch",
             "mainClass": "testando"

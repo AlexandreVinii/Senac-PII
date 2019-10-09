@@ -1,0 +1,39 @@
+Busca Binária Recursiva
+
+Static int busca (int x, int vetor[], int i, int f){
+	if(i > f) return -1; // Condição de parada.
+
+	int m = (i+f)/2;
+
+	if(x == vetor[m]) return m;
+
+	if(x < vetor[m]){
+		busca(x, vetor, i, m-1);
+	}else{
+		busca(x, vetor, m+1, f);
+	}
+
+}
+
+resolução/Diagrama de execução
+vetor = {3, 5, 8, 9, 12}
+
+busca(10, vetor, 0, vetor.length-1)
+-----------------------------------------------------@returna -1
+i= 0 f=4 m=2
+
+busca(x, vetor, m+1, f)
+-----------------------------------------------------@returna -1
+i=3 f=4 m=3
+
+busca(x, vetor, m+1, f)
+-----------------------------------------------------@returna -1
+i=4 f=4 m=4
+
+busca(x, vetor, i, m-1)
+-----------------------------------------------------@returna -1
+i=4 f=3
+returna -1
+-----------------------------------------------------@
+
+

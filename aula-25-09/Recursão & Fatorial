@@ -1,0 +1,9 @@
+Recursão & Fatorial
+
+Recursão = (exemplo do pote de moedas), o pote de moedas vazio, é a instância do problema.
+
+todo problema recursivo é sempre necessário especificar a base da recursão ou a instância de parada.
+
+Fatorial = 5! = 5x4x3x2x1 equals 5x4! = 120
+
+stack = pilha

@@ -1,0 +1,95 @@
+Exercicio 5
+v = {3, 5, 8, 9, 12}
+A)Fazer uma busca linear de um elemento no vetor;
+
+static int linear(int v[], int x, int i){
+	if(i == v.length) return -1;
+
+	if(x == v[i]) return i;
+
+	return linear(v, x, i+1)
+}
+
+
+v = {3, 8, 1, 7}
+B)Encontrar Menor elemento no vetor;
+
+static int menor(int v[], int n){
+	if(n==1) return v[0];
+
+	int x = menor(v, n-1);
+
+	if(x < v[n-1]) return x;
+
+	return v[n-1];
+}
+
+menor(v, v.length)
+-----------------------------------------------------@
+n=4;
+
+x = menor(v, n-1);
+-----------------------------------------------------@ 
+n = 3;
+
+x = menor(v, n-1);
+-----------------------------------------------------@ return 1;
+n = 2;
+
+x = menor(v, n-1);
+---------------------------@ return 3;
+n = 1;
+
+--------------@ return 8;
+
+
+
+
+
+
+
+
+v = {3, 8, 1, 7}
+C)Fazer Soma dos elementos no vetor;
+
+static int soma(int v[], int n){
+	if(n==v.length) return 0;
+
+	return v[n] + soma(v, n+1);
+}
+
+
+soma(v, 0)
+-----------------------------------------------------@ return 19;
+n=0
+
+soma(v, n+1)
+------------------------------------------------@ return 3+16;
+n=1
+
+soma(v, n+1)
+-------------------------------------------@ return 8+8;
+n=2
+
+soma(v, n+1)
+-------------------------------------@ return 1+7;
+n=3
+
+soma(v, n+1)
+------------------------------@ return 7+0;
+n=4
+
+----------@ return 0;
+
+
+
+v = {3, 8, 1, 7}
+D)Media 
+
+static float media(int v[], int n){
+	if(n==v.length) return 0;
+
+	float soma = v[n] + media(v, n+1);
+
+	if(n==0) return soma/v.length;
+}

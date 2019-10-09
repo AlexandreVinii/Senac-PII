@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - centerGravity",
+            "request": "launch",
+            "mainClass": "centerGravity",
+            "projectName": "ADO_centroGravidade_3192076e"
+        }
+    ]
+}

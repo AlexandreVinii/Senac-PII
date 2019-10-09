@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Busca_Ordena",
+            "request": "launch",
+            "mainClass": "Busca_Ordena"
+        }
+    ]
+}
